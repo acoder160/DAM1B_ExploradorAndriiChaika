@@ -1,18 +1,20 @@
 package Clases;
 
 
-public class explorador {
-    private String nombre;
+public class Enemigo {
     private Posicion posicionActual;
 
-    public explorador(String nombre){
-        nombre = this.nombre;
+
+    // Es un lio el enunciado del constructor de enemigo ya que es 100% copiado de la clase explodar, y no cuadra con esta clase asi que he hecho la decision de sequir con la estructura y la logica del ejercicio.
+    public Enemigo(){
         int fila = (int)(Math.random() * 6) + 1;
-        posicionActual = new Posicion(fila, 1);
+        int col = (int)(Math.random() * 20) + 1;
+        posicionActual = new Posicion(fila, col);
     }
 
-    public void moverse(int direccion){
+    public void moverse(){
         // System.out.println("Elige a donde deseee moverse:\n 1 - ARRIBA\n2 - ABAJO\n3 - DERECHA\n4 - IZQUIERDA");
+        int direccion = (int) (Math.random()*4) + 1;
         if(direccion == 1){
             posicionActual.setCoordenadaFila(posicionActual.getCoordenadaFila() + 1);
         } else if (direccion == 2) {
@@ -25,12 +27,7 @@ public class explorador {
 
     }
 
-
-    //geters y seters:
-
-    public String getNombre(){
-        return nombre;
-    }
+    // geters y seters
     public Posicion getPosicionActual(){
         return posicionActual;
     }
