@@ -8,7 +8,7 @@ public class Mapa {
     private Posicion[] posicionTrampas;
 
 
-    public Mapa(){
+    public Mapa(explorador jugador){
         tablero = new char[6][20];
         listadoEnemigos = new Enemigo[3];
         posicionTrampas = new Posicion[3];
@@ -19,6 +19,7 @@ public class Mapa {
         for (int trampas = 0; trampas < 3; trampas++) { //crea tres trampas
             posicionTrampas[trampas] = new Posicion((int)(Math.random() * 6) + 1,(int)(Math.random() * 20) + 1);
         }
+        this.posJugador = jugador.getPosicionActual();
     }
 
     // seters y geters
@@ -30,15 +31,30 @@ public class Mapa {
             }
             System.out.println();
             for (int col = 1; col <= 21; col++) { // de 21 para cerrar con un |
-                if((listadoEnemigos[0].getPosicionActual().getCoordenadaFila() == fila && listadoEnemigos[0].getPosicionActual().getCoordenadaCol() == col) || (listadoEnemigos[1].getPosicionActual().getCoordenadaFila() == fila && listadoEnemigos[1].getPosicionActual().getCoordenadaCol() == col) || (listadoEnemigos[2].getPosicionActual().getCoordenadaFila() == fila && listadoEnemigos[2].getPosicionActual().getCoordenadaCol() == col)){
+                if (posJugador.getCoordenadaFila() == fila && posJugador.getCoordenadaCol() == col){
+                    System.out.print("| J ");
+                } else if((listadoEnemigos[0].getPosicionActual().getCoordenadaFila() == fila && listadoEnemigos[0].getPosicionActual().getCoordenadaCol() == col) || (listadoEnemigos[1].getPosicionActual().getCoordenadaFila() == fila && listadoEnemigos[1].getPosicionActual().getCoordenadaCol() == col) || (listadoEnemigos[2].getPosicionActual().getCoordenadaFila() == fila && listadoEnemigos[2].getPosicionActual().getCoordenadaCol() == col)){
                     System.out.print("| E ");
                 } else if ((posicionTrampas[0].getCoordenadaFila() == fila && posicionTrampas[0].getCoordenadaCol() == col) || (posicionTrampas[1].getCoordenadaFila() == fila && posicionTrampas[1].getCoordenadaCol() == col) || (posicionTrampas[2].getCoordenadaFila() == fila && posicionTrampas[2].getCoordenadaCol() == col)) {
                     System.out.print("| T ");
-                } else{
+                }else{
                 System.out.print("|   ");
                 }
             }
             System.out.println();
         }
     }
+    public char[][] getTablero(){
+        return tablero;
+    }
+    public Posicion getPosTesoro(){
+        return posTesoro;
+    }
+    public Enemigo[] getListadoEnemigos(){
+        return listadoEnemigos;
+    }
+    public Posicion[] getPosicionTrampas(){
+        return posicionTrampas;
+    }
+
 }

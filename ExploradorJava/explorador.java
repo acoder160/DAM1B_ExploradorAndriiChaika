@@ -1,5 +1,5 @@
 package Clases;
-
+import java.util.Scanner;
 
 public class explorador {
     private String nombre;
@@ -12,11 +12,11 @@ public class explorador {
     }
 
     public void moverse(int direccion){
-        // System.out.println("Elige a donde deseee moverse:\n 1 - ARRIBA\n2 - ABAJO\n3 - DERECHA\n4 - IZQUIERDA");
+        //System.out.println("Elige a donde deseee moverse:\n 1 - ARRIBA\n2 - ABAJO\n3 - DERECHA\n4 - IZQUIERDA");
         if(direccion == 1){
-            posicionActual.setCoordenadaFila(posicionActual.getCoordenadaFila() + 1);
-        } else if (direccion == 2) {
             posicionActual.setCoordenadaFila(posicionActual.getCoordenadaFila() - 1);
+        } else if (direccion == 2) {
+            posicionActual.setCoordenadaFila(posicionActual.getCoordenadaFila() + 1);
         } else if (direccion == 3) {
             posicionActual.setCoordenadaCol(posicionActual.getCoordenadaCol() + 1);
         } else if (direccion == 4) {
