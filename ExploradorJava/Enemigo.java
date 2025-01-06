@@ -12,9 +12,7 @@ public class Enemigo {
         posicionActual = new Posicion(fila, col);
     }
 
-    public void moverse(){
-        // System.out.println("Elige a donde deseee moverse:\n 1 - ARRIBA\n2 - ABAJO\n3 - DERECHA\n4 - IZQUIERDA");
-        int direccion = (int) (Math.random()*4) + 1;
+    public void moverse(int direccion){
         if(direccion == 1 && posicionActual.getCoordenadaFila() > 1){
             posicionActual.setCoordenadaFila(posicionActual.getCoordenadaFila() - 1);
         } else if (direccion == 2 && posicionActual.getCoordenadaFila() < 6) {
@@ -24,8 +22,6 @@ public class Enemigo {
         } else if (direccion == 4 && posicionActual.getCoordenadaCol() > 1) {
             posicionActual.setCoordenadaCol(posicionActual.getCoordenadaCol() - 1);
         }
-        else{moverse();}
-        //permito el re-roll si el enemigo intentara moverse fuera de la zona
     }
 
     // geters y seters
