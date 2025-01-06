@@ -13,13 +13,23 @@ public class Mapa {
         listadoEnemigos = new Enemigo[3];
         posicionTrampas = new Posicion[3];
         posTesoro = new Posicion((int)(Math.random() * 6) + 1,(int)(Math.random() * 20) + 1); // creamos tesoro
+        this.posJugador = jugador.getPosicionActual();
+        int col;
+        int fila;
         for (int listaEnemigos = 0; listaEnemigos < 3; listaEnemigos++) { //crea 3 enemigos
             listadoEnemigos[listaEnemigos] = new Enemigo();
         }
-        for (int trampas = 0; trampas < 3; trampas++) { //crea tres trampas
-            posicionTrampas[trampas] = new Posicion((int)(Math.random() * 6) + 1,(int)(Math.random() * 20) + 1);
-        }
-        this.posJugador = jugador.getPosicionActual();
+            posicionTrampas[0] = new Posicion((int)(Math.random() * 6) + 1,(int)(Math.random() * 20) + 1); // creacion de trampa 1
+            do{
+                fila = (int)(Math.random() * 6) + 1;
+                col = (int)(Math.random() * 20) + 1;
+            } while (posicionTrampas[0].getCoordenadaCol() - col <=3 && posicionTrampas[0].getCoordenadaCol() - col > -3); // creacion de trampa 2 con la logica de que distancia sera mayor de 3 columnas
+            posicionTrampas[1] = new Posicion(fila, col);
+        do{
+            fila = (int)(Math.random() * 6) + 1;
+            col = (int)(Math.random() * 20) + 1;
+        } while ((posicionTrampas[0].getCoordenadaCol() - col <=3 && posicionTrampas[0].getCoordenadaCol() - col > -3) || (posicionTrampas[1].getCoordenadaCol() - col <=3 && posicionTrampas[1].getCoordenadaCol() - col > -3)); // creacion de la trampa 3 pero que distancia sera mayor de 3 de la trampa 1 y 3
+        posicionTrampas[2] = new Posicion(fila, col);
     }
 
     // seters y geters
