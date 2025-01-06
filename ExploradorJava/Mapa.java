@@ -6,12 +6,14 @@ public class Mapa {
     private Posicion posJugador;
     private Enemigo[] listadoEnemigos;
     private Posicion[] posicionTrampas;
+    private EnemigoInteligente perseguidor;
 
 
     public Mapa(explorador jugador){
         tablero = new char[6][20];
         listadoEnemigos = new Enemigo[3];
         posicionTrampas = new Posicion[3];
+        perseguidor = new EnemigoInteligente();
         posTesoro = new Posicion((int)(Math.random() * 6) + 1,(int)(Math.random() * 20) + 1); // creamos tesoro
         this.posJugador = jugador.getPosicionActual();
         int col;
@@ -19,10 +21,10 @@ public class Mapa {
         for (int listaEnemigos = 0; listaEnemigos < 3; listaEnemigos++) { //crea 3 enemigos
             listadoEnemigos[listaEnemigos] = new Enemigo();
         }
-            posicionTrampas[0] = new Posicion((int)(Math.random() * 6) + 1,(int)(Math.random() * 20) + 1); // creacion de trampa 1
-            do{
-                fila = (int)(Math.random() * 6) + 1;
-                col = (int)(Math.random() * 20) + 1;
+        posicionTrampas[0] = new Posicion((int)(Math.random() * 6) + 1,(int)(Math.random() * 20) + 1); // creacion de trampa 1
+        do{
+            fila = (int)(Math.random() * 6) + 1;
+            col = (int)(Math.random() * 20) + 1;
             } while (posicionTrampas[0].getCoordenadaCol() - col <=3 && posicionTrampas[0].getCoordenadaCol() - col > -3); // creacion de trampa 2 con la logica de que distancia sera mayor de 3 columnas
             posicionTrampas[1] = new Posicion(fila, col);
         do{
@@ -47,7 +49,9 @@ public class Mapa {
                     System.out.print("| E ");
                 } else if ((posicionTrampas[0].getCoordenadaFila() == fila && posicionTrampas[0].getCoordenadaCol() == col) || (posicionTrampas[1].getCoordenadaFila() == fila && posicionTrampas[1].getCoordenadaCol() == col) || (posicionTrampas[2].getCoordenadaFila() == fila && posicionTrampas[2].getCoordenadaCol() == col)) {
                     System.out.print("| T ");
-                }else{
+                } else if (perseguidor.getPosicionActual().getCoordenadaCol() == col && perseguidor.getPosicionActual().getCoordenadaFila() == fila){
+                    System.out.print("|*E*");
+                } else{
                 System.out.print("|   ");
                 }
             }
@@ -67,4 +71,7 @@ public class Mapa {
         return posicionTrampas;
     }
 
+    public EnemigoInteligente getPerseguidor() {
+        return perseguidor;
+    }
 }

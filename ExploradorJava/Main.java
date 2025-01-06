@@ -74,13 +74,14 @@ public class Main {
         } // turno de enemigos para moverse.
         Enemigo[] enemigo = tablero.getListadoEnemigos();
         Posicion[] trampa = tablero.getPosicionTrampas();
+        EnemigoInteligente pers = tablero.getPerseguidor();
         int arriba = 5;
         int abajo = 5;
         int derecha = 5;
         int izquierda = 5; // se usa 5 por defecto, pero si cumple con algun if (enemigo encontrado o trampa) prohibira el uso aleatorio del movimiento en Do-while que genera direccion.
         int direccion;
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) { // enemigo arriba = fila +1 col ==. abajo fila -1 col ==. derecha fila == col +1. izquierda col -1 fila ==
+            for (int j = 0; j < 3; j++) { // enemigo arriba = fila +1 col ==. abajo fila -1 col ==. derecha fila == col +1. izquierda col -1 fila ==. Usado para captar si hay algo al lado
                 if((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila() + 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila() + 1)){
                     arriba = 1;
                 } else if ((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila() - 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila() - 1)) {
@@ -90,12 +91,16 @@ public class Main {
                 } else if ((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() - 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila()) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() - 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila())) {
                     izquierda = 4;
             }
-            do {
+            do { // generacion de la dirrecion
                 direccion = (int) (Math.random()*4) + 1;
             } while (direccion == arriba || direccion == abajo || direccion == derecha || direccion == izquierda); //si algun enemigo/trampa fue encontrada en la casilla cercana, re generara el numero para no pisar el objeto.
             enemigo[i].moverse(direccion);
         }
+
     }
+        if (jugador.getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila()){
+
+        }
 }
 }
 
