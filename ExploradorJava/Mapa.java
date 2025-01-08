@@ -1,5 +1,6 @@
 package Clases;
 
+
 public class Mapa {
     private char[][] tablero; // = new char[6][20]; //tablero tendra 6 filas y 20 columnas
     private Posicion posTesoro;
@@ -44,13 +45,13 @@ public class Mapa {
             System.out.println();
             for (int col = 1; col <= 21; col++) { // de 21 para cerrar con un |
                 if (posJugador.getCoordenadaFila() == fila && posJugador.getCoordenadaCol() == col){
-                    System.out.print("| J ");
+                    System.out.print("|\u001B[32m J \u001B[0m");
                 } else if((listadoEnemigos[0].getPosicionActual().getCoordenadaFila() == fila && listadoEnemigos[0].getPosicionActual().getCoordenadaCol() == col) || (listadoEnemigos[1].getPosicionActual().getCoordenadaFila() == fila && listadoEnemigos[1].getPosicionActual().getCoordenadaCol() == col) || (listadoEnemigos[2].getPosicionActual().getCoordenadaFila() == fila && listadoEnemigos[2].getPosicionActual().getCoordenadaCol() == col)){
-                    System.out.print("| E ");
+                    System.out.print("|\u001B[31m E \u001B[0m");
                 } else if ((posicionTrampas[0].getCoordenadaFila() == fila && posicionTrampas[0].getCoordenadaCol() == col) || (posicionTrampas[1].getCoordenadaFila() == fila && posicionTrampas[1].getCoordenadaCol() == col) || (posicionTrampas[2].getCoordenadaFila() == fila && posicionTrampas[2].getCoordenadaCol() == col)) {
-                    System.out.print("| T ");
+                    System.out.print("|\u001B[35m T \u001B[0m");
                 } else if (perseguidor.getPosicionActual().getCoordenadaCol() == col && perseguidor.getPosicionActual().getCoordenadaFila() == fila){
-                    System.out.print("|*E*");
+                    System.out.print("|\u001B[31m*E*\u001B[0m");
                 } else{
                 System.out.print("|   ");
                 }

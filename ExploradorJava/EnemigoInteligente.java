@@ -4,7 +4,7 @@ public class EnemigoInteligente {
     private Posicion posicionActual;
 
 
-    // Es un lio el enunciado del constructor de enemigo ya que es 100% copiado de la clase explodar, y no cuadra con esta clase asi que he hecho la decision de sequir con la estructura y la logica del ejercicio.
+
     public EnemigoInteligente(){
         int fila = (int)(Math.random() * 6) + 1;
         int col = (int)(Math.random() * 20) + 1;

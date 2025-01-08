@@ -21,7 +21,7 @@ public class Main {
             }
             for (int i = 0; i < 3; i++) {
                 if ((enemigo[i].getPosicionActual().getCoordenadaFila() == jugador.getPosicionActual().getCoordenadaFila() && enemigo[i].getPosicionActual().getCoordenadaCol() == jugador.getPosicionActual().getCoordenadaCol()) || (perseguidor.getPosicionActual().getCoordenadaFila() == jugador.getPosicionActual().getCoordenadaFila() && perseguidor.getPosicionActual().getCoordenadaCol() == jugador.getPosicionActual().getCoordenadaCol())){
-                    System.out.println("Te han descubierto los enemigos. Fin del juego");
+                    System.out.println("Te ha descubierto un enemigos. Fin del juego");
                     juego = false;
                 } else if (trampas[i].getCoordenadaFila() == jugador.getPosicionActual().getCoordenadaFila() && trampas[i].getCoordenadaCol() == jugador.getPosicionActual().getCoordenadaCol()) {
                     System.out.println("Has caido en una trampa. Fin del juego");
@@ -83,37 +83,60 @@ public class Main {
             int derecha = 5;
             int izquierda = 5; // se usa 5 por defecto, pero si cumple con algun if (enemigo encontrado o trampa) prohibira el uso aleatorio del movimiento en Do-while que genera direccion.
             for (int j = 0; j < 3; j++) { // enemigo arriba = fila +1 col ==. abajo fila -1 col ==. derecha fila == col +1. izquierda col -1 fila ==. Usado para captar si hay algo al lado
-                if((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila() + 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila() + 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == pers.getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila() + 1)){
+                if ((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila() + 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila() + 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == pers.getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila() + 1)) {
                     arriba = 1;
-                } else if ((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila() - 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila() - 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == pers.getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila() - 1)) {
+                } if ((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila() - 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila() - 1) || (enemigo[i].getPosicionActual().getCoordenadaCol() == pers.getPosicionActual().getCoordenadaCol() && enemigo[i].getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila() - 1)) {
                     abajo = 2;
-                } else if ((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() + 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila()) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() + 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila())  || (enemigo[i].getPosicionActual().getCoordenadaCol() == pers.getPosicionActual().getCoordenadaCol() + 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila())) {
+                } if ((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() + 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila()) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() + 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila()) || (enemigo[i].getPosicionActual().getCoordenadaCol() == pers.getPosicionActual().getCoordenadaCol() + 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila())) {
                     derecha = 3;
-                } else if ((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() - 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila()) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() - 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila())  || (enemigo[i].getPosicionActual().getCoordenadaCol() == pers.getPosicionActual().getCoordenadaCol() -1 && enemigo[i].getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila())) {
+                } if ((enemigo[i].getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() - 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila()) || (enemigo[i].getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() - 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila()) || (enemigo[i].getPosicionActual().getCoordenadaCol() == pers.getPosicionActual().getCoordenadaCol() - 1 && enemigo[i].getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila())) {
                     izquierda = 4;
+                }
             }
             do { // generacion de la dirrecion
-                direccion = (int) (Math.random()*4) + 1;
+                direccion = (int) (Math.random() * 4) + 1;
             } while (direccion == arriba || direccion == abajo || direccion == derecha || direccion == izquierda); //si algun enemigo/trampa fue encontrada en la casilla cercana, re generara el numero para no pisar el objeto.
             enemigo[i].moverse(direccion);
-            if (i == 2){
-                if (jugador.getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila()){
-                pers.moverse(direccion);
+            if (i == 2) {
+                int jarriba = 1;
+                int jabajo = 2;
+                int jderecha = 3;
+                int jizquierda = 4;
+                if (jugador.getPosicionActual().getCoordenadaCol() > pers.getPosicionActual().getCoordenadaCol()) {
+                    jderecha = 5;
+                } if (jugador.getPosicionActual().getCoordenadaCol() < pers.getPosicionActual().getCoordenadaCol()) {
+                    jizquierda = 5;
+                } if (jugador.getPosicionActual().getCoordenadaFila() > pers.getPosicionActual().getCoordenadaFila()) {
+                    jabajo = 5;
+                } if (jugador.getPosicionActual().getCoordenadaFila() < pers.getPosicionActual().getCoordenadaFila()) {
+                    jarriba = 5;
+                }
+                for (int j = 0; j < 3; j++) { // enemigo arriba = fila +1 col ==. abajo fila -1 col ==. derecha fila == col +1. izquierda col -1 fila ==. Usado para captar si hay algo al lado
+                    if ((pers.getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() && pers.getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila() + 1) || (pers.getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() && pers.getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila() + 1)) {
+                        jarriba = 1;
+                        System.out.println("encontrado algo arriba");
+                    } if ((pers.getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() && pers.getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila() - 1) || (pers.getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() && pers.getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila() - 1)) {
+                        jabajo = 2;
+                        System.out.println("encontrado algo abajo");
+                    } if ((pers.getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() + 1 && pers.getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila()) || (pers.getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() + 1 && pers.getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila())) {
+                        jderecha = 3;
+                        System.out.println("encontrado algo derecha");
+                    } if ((pers.getPosicionActual().getCoordenadaCol() == enemigo[j].getPosicionActual().getCoordenadaCol() - 1 && pers.getPosicionActual().getCoordenadaFila() == enemigo[j].getPosicionActual().getCoordenadaFila()) || (pers.getPosicionActual().getCoordenadaCol() == trampa[j].getCoordenadaCol() - 1 && pers.getPosicionActual().getCoordenadaFila() == trampa[j].getCoordenadaFila())) {
+                        jizquierda = 4;
+                        System.out.println("encontrado algo inzquierda");
+                    }
+                }
+                if(jarriba == 1 && jabajo == 2 && jderecha == 3 && jizquierda == 4){
+                    break;
+                }
+                else{
+                    do { // generacion de la dirrecion
+                        direccion = (int) (Math.random() * 4) + 1;
+                    } while (direccion == jarriba || direccion == jabajo || direccion == jderecha || direccion == jizquierda); //si algun enemigo/trampa fue encontrada en la casilla cercana, re generara el numero para no pisar el objeto.
+                    pers.moverse(direccion);
+                }
             }
         }
-
     }
-        int arriba = 5;
-        int abajo = 5;
-        int derecha = 5;
-        int izquierda = 5;
-        if (jugador.getPosicionActual().getCoordenadaFila() == pers.getPosicionActual().getCoordenadaFila()){
-
-        }
-        do { // generacion de la dirrecion
-            direccion = (int) (Math.random()*4) + 1;
-        } while (direccion == arriba || direccion == abajo || direccion == derecha || direccion == izquierda); //si algun enemigo/trampa fue encontrada en la casilla cercana, re generara el numero para no pisar el objeto.
-        pers.moverse(direccion);
-}
 }
 
